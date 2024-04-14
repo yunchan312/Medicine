@@ -27,7 +27,7 @@ function App() {
   ]);
   return (
     <div className="w-[100vw] h-[100vh] flex justify-center">
-      <div className="w-[500px]">
+      <div className="w-[500px] border-2 border-black ">
         <RouterProvider router={router} />
       </div>
     </div>
