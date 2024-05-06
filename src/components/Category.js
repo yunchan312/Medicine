@@ -15,7 +15,7 @@ export default function Category({ tag }) {
     <div
       onClick={onClick}
       name={tag}
-      className="bg-purple-100 hover:bg-purple-300 px-2 rounded-full py-1"
+      className="bg-purple-100 hover:bg-purple-300 px-2 rounded-full py-1 cursor-pointer"
     >
       {tag}
     </div>

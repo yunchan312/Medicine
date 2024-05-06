@@ -1,12 +1,11 @@
 import Category from "../components/Category";
 import { useRecoilValue } from "recoil";
-import { filterTag, userState } from "../atom";
+import { filterTag } from "../atom";
 import SelectedTag from "../components/SelectedTag";
 import { useNavigate } from "react-router-dom";
 
 export default function Search() {
   const filter = useRecoilValue(filterTag);
-  const user = useRecoilValue(userState);
   const tags = [
     "간",
     "눈",
@@ -38,8 +37,8 @@ export default function Search() {
         })}
       </div>
       <div
-        onClick={() => navigate(`/result/${filter + user}`)}
-        className="py-1 px-4 bg-purple-100 rounded-full my-10"
+        onClick={() => navigate(`/result/${filter}`)}
+        className="py-1 px-4 bg-purple-100 rounded-full my-10 cursor-pointer"
       >
         NEXT
       </div>
