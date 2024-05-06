@@ -11,7 +11,6 @@ export default function Search() {
     "눈",
     "두뇌활동",
     "피부",
-    "뼈&관절",
     "수면",
     "혈액순환",
     "무기력",
@@ -26,14 +25,14 @@ export default function Search() {
       <div className="border-2 w-[80%] border-black rounded-2xl py-5 flex flex-col justify-center items-center my-10">
         <div className="py-2">태그를 골라주세요</div>
         <div className="w-[80%] flex flex-wrap justify-center items-center gap-4">
-          {tags.map((tag) => {
-            return <Category tag={tag} />;
+          {tags.map((tag, i) => {
+            return <Category key={i} tag={tag} />;
           })}
         </div>
       </div>
       <div className="w-[80%] mt-5 text-center flex flex-wrap justify-center gap-3">
-        {filter.map((tag) => {
-          return <SelectedTag tag={tag} />;
+        {filter.map((tag, i) => {
+          return <SelectedTag key={i} tag={tag} />;
         })}
       </div>
       <div
