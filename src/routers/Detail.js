@@ -48,7 +48,7 @@ export default function Detail() {
     <div className="flex flex-col px-2 gap-3">
       <img src={photo} className="self-center w-[70%]" />
       <div className="border-b-2 pb-2 flex justify-between px-3 items-end">
-        <span className="text-[30px]">{title}</span>
+        <span className="text-[30px] w-[340px]">{title}</span>
         <span>{parm}</span>
       </div>
       <div className="flex gap-2 px-5">

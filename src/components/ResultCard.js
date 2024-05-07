@@ -38,6 +38,8 @@ export default function ResultCard({
       });
     } catch (e) {
       console.log(e);
+    } finally {
+      alert("추천 완료");
     }
   };
   useEffect(() => {

@@ -8,7 +8,11 @@ export default function AgeChart({ data }) {
     const getData = () => {
       let age = [0, 0, 0, 0, 0, 0, 0, 0];
       data.map((d) => {
-        age[Math.floor(d.age / 10)] += 1;
+        if (Math.floor(d.age / 10) >= 7) {
+          age[7] += 1;
+        } else {
+          age[Math.floor(d.age / 10)] += 1;
+        }
       });
       setCount(age);
     };
