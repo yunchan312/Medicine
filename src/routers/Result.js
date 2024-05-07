@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { filterTag, userState } from "../atom";
 import { useEffect, useState } from "react";
-import { data } from "../data";
+import { data } from "../Data";
 import ResultCard from "../components/ResultCard";
 
 export default function Result() {
@@ -12,7 +12,7 @@ export default function Result() {
     const temp = new Set();
     filter.forEach((tag) => {
       medicines.forEach((medi) => {
-        if (medi.PRIMARY_FNCLTY.includes(tag)) {
+        if (medi.TYPE.includes(tag)) {
           temp.add(medi);
         }
       });
@@ -20,15 +20,17 @@ export default function Result() {
     setResult(Array.from(temp));
   };
   useEffect(() => {
-    console.log(filter);
     searchResult();
-    console.log(result);
   }, []);
   return (
-    <div>
-      {result.map((res, i) => {
-        return <ResultCard key={i} {...res} />;
-      })}
+    <div className="flex flex-col gap-10 w-[450px] justify-center items-center ml-auto mr-auto">
+      {result ? (
+        result.map((res, i) => {
+          return <ResultCard key={i} {...res} />;
+        })
+      ) : (
+        <div>Nothing</div>
+      )}
     </div>
   );
 }

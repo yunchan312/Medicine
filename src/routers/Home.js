@@ -10,15 +10,12 @@ export default function Home() {
   const onSubmit = (e) => {
     e.preventDefault();
     setUser({
-      sex: sex,
+      sex: e.target[0].value,
       age: e.target[1].value,
       height: e.target[2].value,
       weight: e.target[3].value,
     });
     navigate("/search");
-  };
-  const onSelected = (e) => {
-    setSex(e.target.value);
   };
 
   return (
@@ -29,10 +26,7 @@ export default function Home() {
       >
         <div>
           <div className="font-bold">성별</div>
-          <select
-            onSelect={onSelected}
-            className="border-b-2 border-black py-1 w-full"
-          >
+          <select className="border-b-2 border-black py-1 w-full">
             <option id="sex" value="male">
               남자
             </option>

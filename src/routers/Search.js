@@ -1,6 +1,6 @@
 import Category from "../components/Category";
 import { useRecoilValue } from "recoil";
-import { filterTag } from "../atom";
+import { filterTag, userState } from "../atom";
 import SelectedTag from "../components/SelectedTag";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,6 @@ export default function Search() {
   const tags = [
     "간",
     "눈",
-    "두뇌활동",
     "피부",
     "수면",
     "혈액순환",
@@ -17,7 +16,8 @@ export default function Search() {
     "면역",
     "소화",
     "다이어트",
-    "알러지",
+    "뼈",
+    "관절",
   ];
   const navigate = useNavigate();
   return (
