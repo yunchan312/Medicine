@@ -48,7 +48,11 @@ export default function ResultCard({
   return (
     <div className="shadow-lg px-5 w-full flex-col flex gap-2 py-5">
       <div className="flex flex-col justify-center items-center">
-        {photo ? <img src={photo} /> : <span>None</span>}
+        {photo ? (
+          <img src={photo} />
+        ) : (
+          <div className="text-center py-24 w-full">Loading...</div>
+        )}
       </div>
       <div className="border-b-2 pb-2 flex items-center justify-between">
         <div className="text-[25px]">{PRDLST_NM}</div>
