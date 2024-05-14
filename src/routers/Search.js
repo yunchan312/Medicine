@@ -11,13 +11,18 @@ export default function Search() {
     "눈",
     "피부",
     "수면",
-    "혈액순환",
-    "무기력",
+    "혈액",
+    "에너지",
     "면역",
     "소화",
     "다이어트",
     "뼈",
     "관절",
+    "노화",
+    "기억력",
+    "피로",
+    "근육",
+    "배변",
   ];
   const navigate = useNavigate();
   return (
