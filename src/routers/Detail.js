@@ -37,7 +37,7 @@ export default function Detail() {
     setTitle(temp[0].PRDLST_NM);
     setParm(temp[0].BSSH_NM);
     setSpec(temp[0].PRIMARY_FNCLTY);
-    setType(temp[0].TYPE.split(", "));
+    setType(temp[0].TYPE);
     setCaution(temp[0].IFTKN_ATNT_MATR_CN);
     setInform(temp[0].STDR_STND);
     setHow(temp[0].NTK_MTHD);

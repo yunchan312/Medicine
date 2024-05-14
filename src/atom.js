@@ -14,3 +14,8 @@ export const filterTag = atom({
   key: "filterTags",
   default: [],
 });
+
+export const manageLikes = atom({
+  key: "manageLikes",
+  default: [],
+});

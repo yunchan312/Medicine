@@ -2,7 +2,7 @@ import { getDownloadURL, ref } from "firebase/storage";
 import { database, storage } from "../firebase";
 import { useEffect, useState } from "react";
 import Type from "./Type";
-import { addDoc, arrayUnion, collection, updateDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { useRecoilValue } from "recoil";
 import { userState } from "../atom";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ export default function ResultCard({
 }) {
   const [photo, setPhoto] = useState("");
   const [type, setType] = useState([]);
+  const [likes, setLikes] = useState(0);
   const user = useRecoilValue(userState);
   const navigate = useNavigate();
   const getPhoto = async () => {
@@ -29,6 +30,7 @@ export default function ResultCard({
     }
   };
   const onClick = async () => {
+    getLikes();
     try {
       await addDoc(collection(database, `${PRDLST_REPORT_NO}`), {
         age: user.age,
@@ -42,8 +44,17 @@ export default function ResultCard({
       alert("추천 완료");
     }
   };
+  const getLikes = async () => {
+    try {
+      const temp = await getDocs(collection(database, `${PRDLST_REPORT_NO}`));
+      setLikes(temp.docs.length);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     getPhoto();
+    getLikes();
   }, []);
   return (
     <div className="shadow-lg px-5 w-full flex-col flex gap-2 py-5">
@@ -51,7 +62,9 @@ export default function ResultCard({
         {photo ? (
           <img src={photo} />
         ) : (
-          <div className="text-center py-24 w-full">Loading...</div>
+          <div className="text-center font-bold text-xl py-24 border-4 border-purple-400 rounded-xl w-full">
+            Loading...
+          </div>
         )}
       </div>
       <div className="border-b-2 pb-2 flex items-center justify-between">
@@ -72,6 +85,7 @@ export default function ResultCard({
               fill="#201F29"
             ></path>
           </svg>
+          <div>{likes}</div>
         </div>
       </div>
 
@@ -79,7 +93,7 @@ export default function ResultCard({
         <div className="text-[15px]">{BSSH_NM}</div>
 
         <div className="flex gap-2">
-          {type.map((t, i) => (
+          {TYPE.map((t, i) => (
             <Type key={i} type={t} />
           ))}
         </div>
