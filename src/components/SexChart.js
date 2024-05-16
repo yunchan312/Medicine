@@ -59,11 +59,6 @@ export default function SexChart({ data }) {
     responsive: [
       {
         breakpoint: 480,
-        options: {
-          chart: {
-            width: 200,
-          },
-        },
       },
     ],
     tooltip: {
@@ -74,7 +69,7 @@ export default function SexChart({ data }) {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="self-start px-5 font-bold">성비</div>
-      <Chart options={options} series={count} type="donut" width="380" />
+      <Chart options={options} series={count} type="donut" width={350} />
     </div>
   );
 }

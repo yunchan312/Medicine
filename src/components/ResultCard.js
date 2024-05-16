@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 export default function ResultCard({
   PRDLST_NM,
   PRDLST_REPORT_NO,
-  PRIMARY_FNCLTY,
   BSSH_NM,
   TYPE,
 }) {
@@ -24,7 +23,7 @@ export default function ResultCard({
       const locationRef = ref(storage, `photo/${PRDLST_REPORT_NO}.jpg`);
       const photoUrl = await getDownloadURL(locationRef);
       setPhoto(photoUrl);
-      setType(TYPE.split(", "));
+      setType(TYPE);
     } catch (e) {
       console.log(e);
     }
@@ -57,12 +56,12 @@ export default function ResultCard({
     getLikes();
   }, []);
   return (
-    <div className="shadow-lg px-5 w-full flex-col flex gap-2 py-5">
+    <div className="shadow-lg px-5 flex-col flex gap-2 py-5 w-full">
       <div className="flex flex-col justify-center items-center">
         {photo ? (
-          <img src={photo} />
+          <img src={photo} className="" />
         ) : (
-          <div className="text-center font-bold text-xl py-24 border-4 border-purple-400 rounded-xl w-full">
+          <div className="text-center font-bold text-xl w-full py-24 border-4 border-purple-400 rounded-xl">
             Loading...
           </div>
         )}
@@ -89,7 +88,7 @@ export default function ResultCard({
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-2">
         <div className="text-[15px]">{BSSH_NM}</div>
 
         <div className="flex gap-2">
@@ -98,7 +97,6 @@ export default function ResultCard({
           ))}
         </div>
       </div>
-      <div>{PRIMARY_FNCLTY}</div>
       <div
         className="text-center py-1 rounded-full bg-purple-300 cursor-pointer hover:bg-purple-500"
         onClick={() => navigate(`/detail/${PRDLST_REPORT_NO}`)}

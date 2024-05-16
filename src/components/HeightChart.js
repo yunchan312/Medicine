@@ -37,7 +37,7 @@ export default function HeightChart({ data }) {
       show: false,
     },
     xaxis: {
-      tickAmount: 10,
+      tickAmount: 5,
       min: 0,
       max: 110,
 
@@ -67,7 +67,7 @@ export default function HeightChart({ data }) {
         series={options.series}
         type="scatter"
         height={350}
-        width={500}
+        width={350}
       />
     </div>
   );

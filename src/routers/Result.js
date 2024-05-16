@@ -23,7 +23,7 @@ export default function Result() {
     searchResult();
   }, []);
   return (
-    <div className="flex flex-col gap-10 w-[450px] justify-center items-center ml-auto mr-auto">
+    <div className="flex flex-col gap-10 w-full justify-center items-center ml-auto mr-auto">
       {result ? (
         result.map((res, i) => {
           return <ResultCard key={i} {...res} />;

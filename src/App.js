@@ -32,7 +32,7 @@ function App() {
   ]);
   return (
     <div className="w-[100vw] h-[100vh] flex justify-center">
-      <div className="w-[500px] border-2 border-black overflow-y-scroll no-scrollbar">
+      <div className="max-w-[500px] border-2 border-black overflow-y-scroll no-scrollbar">
         <RouterProvider router={router} />
       </div>
     </div>

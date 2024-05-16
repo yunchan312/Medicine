@@ -49,8 +49,8 @@ export default function Detail() {
       <img src={photo} className="self-center w-[70%]" />
       <div className="border-b-2 pb-2 flex justify-between px-3 items-end">
         <span className="text-[30px] w-[340px]">{title}</span>
-        <span>{parm}</span>
       </div>
+      <div className="px-5">{parm}</div>
       <div className="flex gap-2 px-5">
         {type.map((t, i) => (
           <Type key={i} type={t} />
@@ -68,7 +68,9 @@ export default function Detail() {
       <div className="px-5 font-bold">첨가물</div>
       <div className="px-5">{additive}</div>
       <div>
-        <div className="text-[20px] font-bold px-5">좋아요 관련 정보</div>
+        <div className="text-[20px] w-full font-bold px-5">
+          좋아요 관련 정보
+        </div>
         <ChartData />
       </div>
     </div>

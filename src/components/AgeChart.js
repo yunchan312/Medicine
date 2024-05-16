@@ -101,7 +101,7 @@ export default function AgeChart({ data }) {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="self-start px-5 font-bold">나이</div>
-      <Chart options={options} series={options.series} type="bar" width={500} />
+      <Chart options={options} series={options.series} type="bar" width={350} />
     </div>
   );
 }
