@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Result from "./routers/Result";
 import Search from "./routers/Search";
 import Detail from "./routers/Detail";
+import Test from "./Test";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,10 +30,14 @@ function App() {
         },
       ],
     },
+    {
+      path: "/test",
+      element: <Test />,
+    },
   ]);
   return (
     <div className="w-[100vw] h-[100vh] flex justify-center">
-      <div className="max-w-[500px] border-2 border-black overflow-y-scroll no-scrollbar">
+      <div className="w-[500px] border-2 border-black overflow-y-scroll no-scrollbar">
         <RouterProvider router={router} />
       </div>
     </div>

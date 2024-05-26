@@ -5,8 +5,7 @@ export const userState = atom({
   default: {
     sex: "male",
     age: 0,
-    height: 0,
-    weight: 0,
+    job: "inoccupation",
   },
 });
 

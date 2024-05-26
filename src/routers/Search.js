@@ -3,8 +3,10 @@ import { useRecoilValue } from "recoil";
 import { filterTag, userState } from "../atom";
 import SelectedTag from "../components/SelectedTag";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Search() {
+  const user = useRecoilValue(userState);
   const filter = useRecoilValue(filterTag);
   const tags = [
     "간",
@@ -25,6 +27,7 @@ export default function Search() {
     "배변",
   ];
   const navigate = useNavigate();
+
   return (
     <div className="flex flex-col justify-around items-center">
       <div className="border-2 w-[80%] border-black rounded-2xl py-5 flex flex-col justify-center items-center my-10">

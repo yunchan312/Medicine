@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userState } from "../atom";
 import { useNavigate } from "react-router-dom";
 
@@ -12,14 +12,13 @@ export default function Home() {
     setUser({
       sex: e.target[0].value,
       age: e.target[1].value,
-      height: e.target[2].value,
-      weight: e.target[3].value,
+      job: e.target[2].value,
     });
     navigate("/search");
   };
 
   return (
-    <div className="flex justify-center items-center  py-10">
+    <div className="flex justify-center items-center py-10 h-[80vh]">
       <form
         onSubmit={onSubmit}
         className="border-2 bg-white border-black rounded-xl py-10 px-5 flex flex-col gap-5"
@@ -45,22 +44,30 @@ export default function Home() {
           />
         </div>
         <div>
-          <div className="font-bold">키</div>
-          <input
-            required
-            className="border-b-2 border-black py-1"
-            type="number"
-            placeholder="height"
-          />
-        </div>
-        <div>
-          <div className="font-bold">몸무게</div>
-          <input
-            required
-            className="border-b-2 border-black py-1"
-            type="number"
-            placeholder="weight"
-          />
+          <div className="font-bold">직업</div>
+          <select className="border-b-2 border-black py-1 w-full">
+            <option id="job" value="inoccupation">
+              무직
+            </option>
+            <option id="job" value="student">
+              학생
+            </option>
+            <option id="job" value="office">
+              직장인
+            </option>
+            <option id="job" value="public">
+              공무원
+            </option>
+            <option id="job" value="freelancer">
+              프리랜서
+            </option>
+            <option id="job" value="self">
+              자영업자
+            </option>
+            <option id="job" value="retiree">
+              퇴직자
+            </option>
+          </select>
         </div>
         <input
           type="submit"

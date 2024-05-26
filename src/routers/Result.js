@@ -6,6 +6,8 @@ import ResultCard from "../components/ResultCard";
 
 export default function Result() {
   const filter = useRecoilValue(filterTag);
+  const user = useRecoilValue(userState);
+
   const [result, setResult] = useState([]);
   const medicines = data.C003.row;
   const searchResult = () => {
@@ -23,7 +25,7 @@ export default function Result() {
     searchResult();
   }, []);
   return (
-    <div className="flex flex-col gap-10 w-full justify-center items-center ml-auto mr-auto">
+    <div className="flex flex-col w-full justify-center items-center ml-auto mr-auto">
       {result ? (
         result.map((res, i) => {
           return <ResultCard key={i} {...res} />;

@@ -1,11 +1,13 @@
-import { collection, getDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { database, storage } from "../firebase";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { data } from "../Data.js";
 import Type from "../components/Type.js";
-import ChartData from "../utility/ChartData.js";
+import SexChart from "../utility/SexChart.js";
+import AgeChart from "../utility/AgeChart.js";
+import JobChart from "../utility/JobChart.js";
 
 export default function Detail() {
   const { id } = useParams();
@@ -71,7 +73,11 @@ export default function Detail() {
         <div className="text-[20px] w-full font-bold px-5">
           좋아요 관련 정보
         </div>
-        <ChartData />
+        <div>
+          <SexChart />
+          <AgeChart />
+          <JobChart />
+        </div>
       </div>
     </div>
   );

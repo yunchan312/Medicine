@@ -1,23 +1,38 @@
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import { useParams } from "react-router-dom";
+import { database } from "../firebase";
 
-export default function AgeChart({ data }) {
+export default function AgeChart() {
   const [count, setCount] = useState([]);
+  const [isChart, setIsChart] = useState(false);
+  const { id } = useParams();
 
-  useEffect(() => {
-    const getData = () => {
-      let age = [0, 0, 0, 0, 0, 0, 0, 0];
-      data.map((d) => {
-        if (Math.floor(d.age / 10) >= 7) {
-          age[7] += 1;
+  const fetch = async () => {
+    try {
+      const mediRef = doc(database, "like", `${id}`);
+      const result = await getDoc(mediRef);
+      const age = result.data().age;
+      let res = [0, 0, 0, 0, 0, 0, 0, 0];
+      age.map((a) => {
+        if (a >= 70) {
+          res[7] += 1;
         } else {
-          age[Math.floor(d.age / 10)] += 1;
+          const i = Math.floor(a / 10);
+          res[i] += 1;
         }
       });
-      setCount(age);
-    };
-    getData();
-  }, [data]);
+      setCount(res);
+      setIsChart(true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   const options = {
     chart: {
@@ -100,8 +115,22 @@ export default function AgeChart({ data }) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="self-start px-5 font-bold">나이</div>
-      <Chart options={options} series={options.series} type="bar" width={350} />
+      {isChart ? (
+        <>
+          {" "}
+          <div className="self-start px-5 font-bold">나이</div>
+          <Chart
+            options={options}
+            series={options.series}
+            type="bar"
+            width={350}
+          />
+        </>
+      ) : (
+        <div className="border-4 rounded-full my-5 border-purple-300 w-full px-5 text-center">
+          좋아요 정보가 없습니다.
+        </div>
+      )}
     </div>
   );
 }
