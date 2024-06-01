@@ -3,6 +3,7 @@ import { filterTag, userState } from "../atom";
 import { useEffect, useState } from "react";
 import { data } from "../Data";
 import ResultCard from "../components/ResultCard";
+import { SortByLikes } from "../Func/SortByLikes";
 
 export default function Result() {
   const filter = useRecoilValue(filterTag);
@@ -10,16 +11,24 @@ export default function Result() {
 
   const [result, setResult] = useState([]);
   const medicines = data.C003.row;
-  const searchResult = () => {
+  const searchResult = async () => {
     const temp = new Set();
     filter.forEach((tag) => {
       medicines.forEach((medi) => {
         if (medi.TYPE.includes(tag)) {
-          temp.add(medi);
+          temp.add(medi.PRDLST_REPORT_NO);
         }
       });
     });
-    setResult(Array.from(temp));
+    //좋아요 순서에 맞게 sort
+    const sortedList = await SortByLikes(Array.from(temp), user);
+    let finalList = [];
+    sortedList.forEach((id) => {
+      finalList.push(
+        medicines.filter((medi) => medi.PRDLST_REPORT_NO === id)[0]
+      );
+    });
+    setResult(finalList);
   };
   useEffect(() => {
     searchResult();

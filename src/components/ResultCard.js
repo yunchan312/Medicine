@@ -59,6 +59,7 @@ export default function ResultCard({
         sex: [user.sex],
       });
     }
+    alert("좋아요 성공했습니다!");
   };
   const getLikes = async () => {
     try {
