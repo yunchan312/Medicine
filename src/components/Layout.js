@@ -9,8 +9,7 @@ export default function Layout() {
     setUser({
       sex: "male",
       age: 0,
-      height: 0,
-      weight: 0,
+      job: "inoccupation",
     });
     navigate("/");
   };

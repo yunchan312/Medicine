@@ -117,7 +117,6 @@ export default function AgeChart() {
     <div className="flex flex-col justify-center items-center">
       {isChart ? (
         <>
-          {" "}
           <div className="self-start px-5 font-bold">나이</div>
           <Chart
             options={options}
